@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+    <div>
+        <ion-card class="ion-text-center">
+            <ion-card-title>
+                <ion-label>
+                    <h1>Crear un Viaje</h1>
+                </ion-label>
+            </ion-card-title>
+            <ion-item>
+                <ion-label position="floating">ID</ion-label>
+                <ion-input type="number" [(ngModeel)]="id"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Direccion</ion-label>
+                <ion-input type="text" [(ngModeel)]="direc"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Fecha</ion-label>
+                <ion-datetime displayFormat="MM DD YYYY" placeholder="Select Date" [(ngModeel)]="fe"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Acompañantes</ion-label>
+                <ion-input type="number" pattern="\d*" [(ngModeel)]="acom"></ion-input>
+            </ion-item>
+            <ion-alert-controller></ion-alert-controller>
+            <ion-button expand="block" (click)="addVia()">Crear</ion-button>
+        </ion-card>
+    </div>
+</ion-content>

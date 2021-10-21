@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title class="ion-text-center">
+            Te Llevo
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/login"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <!--components-->
+    <ion-toolbar>
+        <ion-segment (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="viajes">
+                <ion-icon name="car-sport-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="crearviaje">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="misdatos">
+                <ion-icon name="person-outline"></ion-icon>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-router-outlet></ion-router-outlet>
+    <!--<div class="div1">
+        <ion-card class="ion-text-center">
+            <ion-card-title>
+                <ion-label>
+                    <h1>Bienvenido {{nuser}}</h1>
+                </ion-label>
+            </ion-card-title>
+            <ion-button expand="block" (click)="crear()">Crear Viaje</ion-button>
+            <ion-button expand="block" (click)="irviajes()">Buscar Viaje</ion-button>
+            <ion-button expand="block" (click)="salir()">Salir</ion-button>
+        </ion-card>
+    </div>-->
+
+</ion-content>

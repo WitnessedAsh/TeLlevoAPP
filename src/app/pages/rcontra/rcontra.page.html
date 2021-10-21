@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Te Llevo</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/login"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding-vertical">
+        <ion-card class="ion-text-center">
+            <ion-card-title>
+                <ion-label>
+                    <h1>Recuperar Cuenta</h1>
+                </ion-label>
+            </ion-card-title>
+            <ion-card-content>
+                <ion-item>
+                    <ion-label position="floating">Usuario</ion-label>
+                    <ion-input maxlength=10 minlength=3 type="text"></ion-input>
+                </ion-item>
+            </ion-card-content>
+            <ion-alert-controller></ion-alert-controller>
+            <ion-button expand="block" (click)="enviaralert()" (click)="siguiente()">Enviar</ion-button>
+        </ion-card>
+    </div>
+</ion-content>
