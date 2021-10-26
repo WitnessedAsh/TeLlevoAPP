@@ -3,36 +3,9 @@
         <ion-card class="ion-text-center">
             <ion-card-title>
                 <ion-label>
-                    <h1>Buscar un Viaje</h1>
+                    <h1>Bienvenido {{nuser}}</h1>
                 </ion-label>
             </ion-card-title>
-            <ion-item>
-                <ion-label>Región</ion-label>
-                <ion-select placeholder="Select One" multiple="false">
-                    <ion-select-option value="I">I Región</ion-select-option>
-                    <ion-select-option value="II">II Región</ion-select-option>
-                    <ion-select-option value="III">III Región</ion-select-option>
-                    <ion-select-option value="IV">IV Región</ion-select-option>
-                    <ion-select-option value="V">V Región</ion-select-option>
-                    <ion-select-option value="VI">VI Región</ion-select-option>
-                    <ion-select-option value="VII">VII Región</ion-select-option>
-                    <ion-select-option value="VIII">VIII Región</ion-select-option>
-                    <ion-select-option value="IX">IX Región</ion-select-option>
-                    <ion-select-option value="X">X Región</ion-select-option>
-                    <ion-select-option value="XI">XI Región</ion-select-option>
-                    <ion-select-option value="XII">XII Región</ion-select-option>
-                    <ion-select-option value="XIII">XIII Región</ion-select-option>
-                    <ion-select-option value="XIV">XIV Región</ion-select-option>
-                    <ion-select-option value="XV">XV Región</ion-select-option>
-                    <ion-select-option value="XVI">XVI Región</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Fecha</ion-label>
-                <ion-datetime displayFormat="MM DD YYYY" placeholder="Select Date"></ion-datetime>
-            </ion-item>
-            <ion-alert-controller></ion-alert-controller>
-            <ion-button expand="block" (click)="buscar()" (click)="volver()">Buscar</ion-button>
         </ion-card>
     </div>
 

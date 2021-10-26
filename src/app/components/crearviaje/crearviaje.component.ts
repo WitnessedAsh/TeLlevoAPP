@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { BDLocalService } from 'src/app/services/bdlocal.service';
-import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { Viaje } from 'src/app/interfaces/viaje';
 
 @Component({
@@ -11,11 +10,6 @@ import { Viaje } from 'src/app/interfaces/viaje';
   styleUrls: ['./crearviaje.component.scss'],
 })
 export class CrearviajeComponent implements OnInit {
-  id:any;
-  direc:any;
-  fe:any;
-  acom:any;
-
   constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router, 
     public bdlocalservice: BDLocalService) { }
 
@@ -25,22 +19,16 @@ export class CrearviajeComponent implements OnInit {
   //  this.bdlocalservice.addViaje(Viaje);
   //}
 
-  addVia(){
-    //this.bdlocalservice.guardarViaje(this.id,this.direc,this.fe,this.acom);
-    console.log(this.id,this.direc,this.fe,this.acom);
+  crear(){
+    this.router.navigate(["crearviaje"])
   }
 
-  async Crear(){
-    let cAlerta = await this.alerta.create({
-      header: 'Creando',
-      message: 'Viaje creado',
-      buttons: ['Siguiente']
-    });
-    await cAlerta.present()
+  viajes(){
+    this.router.navigate(["viajes"])
   }
 
-  volver(){
-    this.router.navigate(["home"])
+  modificar(){
+    this.router.navigate(["modificar"])
   }
 
 }

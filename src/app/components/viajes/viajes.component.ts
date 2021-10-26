@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { HomePage } from 'src/app/pages/home/home.page';
 
 @Component({
   selector: 'app-viajes',
@@ -8,8 +9,9 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./viajes.component.scss'],
 })
 export class ViajesComponent implements OnInit {
-
-  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router) { }
+  nuser:String;
+  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router,
+    private home: HomePage) {}
 
   ngOnInit() {}
 

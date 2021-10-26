@@ -11,17 +11,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { enterAnimation } from './animations/nav-animation';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-import { BDLocalService } from './services/bdlocal.service';
-import { LocalstorageService } from './services/localstorage.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [IonicStorageModule.forRoot(), FormsModule, BrowserModule, IonicModule.forRoot({
+  imports: [HttpClientModule, IonicStorageModule.forRoot(), FormsModule, BrowserModule, IonicModule.forRoot({
     navAnimation: enterAnimation
   }), AppRoutingModule, BrowserAnimationsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, LocalstorageService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

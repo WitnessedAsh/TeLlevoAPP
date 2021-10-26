@@ -1,7 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { createAnimation ,Animation, AnimationController } from '@ionic/angular';
+import { ViajesComponent } from 'src/app/components/viajes/viajes.component';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,9 @@ import { createAnimation ,Animation, AnimationController } from '@ionic/angular'
 })
 
 export class HomePage {
-  nuser:any;
+  nuser:String;
   constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
-    this.router.navigate(['home/crearviaje'])
+    
   }
 
   segmentChanged(event: any){

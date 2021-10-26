@@ -18,11 +18,11 @@
             <ion-card-content>
                 <ion-item>
                     <ion-label position="floating">Usuario</ion-label>
-                    <ion-input maxlength=10 minlength=3 type="text"></ion-input>
+                    <ion-input maxlength=10 minlength=3 type="text" [(ngModel)]="user" required></ion-input>
                 </ion-item>
             </ion-card-content>
             <ion-alert-controller></ion-alert-controller>
-            <ion-button expand="block" (click)="enviaralert()" (click)="siguiente()">Enviar</ion-button>
+            <ion-button expand="block" (click)="validar()">Enviar</ion-button>
         </ion-card>
     </div>
 </ion-content>

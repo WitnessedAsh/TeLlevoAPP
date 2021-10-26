@@ -4,7 +4,7 @@
             Te Llevo
         </ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/home"></ion-back-button>
+            <ion-back-button defaultHref="/home/viajes"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -15,22 +15,21 @@
             <ion-card-title>
                 <ion-label>
                     <h1>Viajes</h1>
-                    <ion-item>
-                        <ion-select type="text" placeholder="Seleccione sector" [(ngModel)]="visec">
-                            <ion-select-option>Viña del Mar</ion-select-option>
-                            <ion-select-option>Valparaiso</ion-select-option>
-                        </ion-select>
-                    </ion-item>
-                    <ion-button expand="block" (click)="btnVer()" [(ngModel)]="viaje">Ver</ion-button>
                 </ion-label>
             </ion-card-title>
             <ion-list>
-                <ion-item *ngFor="let via of viajes" [value]="via">
+                <ion-item *ngFor="let via of vil;let index = i" [value]="via">
                     <ion-label>
                         <h4>Dirección: {{via.viDireccion}}</h4>
                         <h4>Sector: {{via.viSector}}</h4>
                         <p>Asientos: {{via.viAcompa}}</p>
                         <!--<p>{{via.viFecha}}</p>-->
+                        <ion-button (click)="detalles()">
+                            <ion-icon name="reorder-four-outline"></ion-icon>
+                        </ion-button>
+                        <ion-button (click)="Eliminar(via.id,index)">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </ion-button>
                     </ion-label>
                 </ion-item>
             </ion-list>

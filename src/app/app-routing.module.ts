@@ -28,9 +28,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crearviaje/crearviaje.module').then( m => m.CrearviajePageModule)
   },
   {
+    path: 'modificar',
+    loadChildren: () => import('./pages/modificar/modificar.module').then( m => m.ModificarPageModule)
+  },
+  {
+    path: 'detalles',
+    loadChildren: () => import('./pages/detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
-  },
+  }
 ];
 
 @NgModule({

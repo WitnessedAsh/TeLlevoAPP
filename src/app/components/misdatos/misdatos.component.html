@@ -1,3 +1,15 @@
-<p>
-  misdatos works!
-</p>
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+    <div>
+        <ion-card class="ion-text-center">
+            <ion-card-title>
+                <ion-label>
+                    <h1>Mis Datos</h1>
+                </ion-label>
+            </ion-card-title>
+            <ion-alert-controller></ion-alert-controller>
+            <ion-button expand="block" (click)="crear()">Datos Personales</ion-button>
+            <ion-button expand="block" (click)="irviajes()">Viajes Preferidos</ion-button>
+        </ion-card>
+    </div>
+
+</ion-content>

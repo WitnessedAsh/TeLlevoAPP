@@ -15,14 +15,14 @@
             <ion-card-content>
                 <ion-item>
                     <ion-label position="floating">Usuario</ion-label>
-                    <ion-input maxlength=10 minlength=3 type="text" [(ngModel)]="nuser"></ion-input>
+                    <ion-input maxlength=10 minlength=3 type="text" [(ngModel)]="nuser" required></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">Contraseña</ion-label>
-                    <ion-input type="password"></ion-input>
+                    <ion-input aria-multiline=5 type="password" [(ngModel)]="ncontra" required></ion-input>
                 </ion-item>
             </ion-card-content>
-            <ion-button expand="block" (click)="siguiente()">Ingresar</ion-button>
+            <ion-button expand="block" (click)="validar()">Ingresar</ion-button>
             <p>
                 <ion-text color="primary" (click)="ircontra()">¿Olvidaste tu contraseña?</ion-text>
             </p>

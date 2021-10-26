@@ -27,11 +27,11 @@ export class BDLocalService {
       this.aviaje=lviaje;
     }
   }
-
-  guardarViaje(id: number, direc: String, fe: Date, acom: number){
-    const existe=this.aviaje.find(d=>d.viID===id);
+  //id: number, viID:id,
+  guardarViaje(direc: String, fe: Date, acom: number,sec: String){
+    const existe=this.aviaje.find(d=>d.viDireccion===direc);
     if(!existe){
-      this.aviaje.unshift({viID:id,viDireccion:direc,viFecha:fe,viAcompa:acom});
+      this.aviaje.unshift({viDireccion:direc,viFecha:fe,viAcompa:acom,viSector:sec});
       this._storage.set('aviaje',this.aviaje);
      this.presentToast("Viaje agregado.");
     }else{
