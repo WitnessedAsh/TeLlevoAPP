@@ -9,9 +9,8 @@ import { HomePage } from 'src/app/pages/home/home.page';
   styleUrls: ['./viajes.component.scss'],
 })
 export class ViajesComponent implements OnInit {
-  nuser:String;
-  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router,
-    private home: HomePage) {}
+  @Input() nuser;
+  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
 

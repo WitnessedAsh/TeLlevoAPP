@@ -12,9 +12,13 @@ import { ViajesComponent } from 'src/app/components/viajes/viajes.component';
 
 export class HomePage {
   nuser:String;
-  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
-    
-  }
+  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) { }
+
+  ngOnInit() {let NavigationExtras: NavigationExtras={
+    state:{nuser: this.nuser}
+  };
+  this.router.navigate(["/home/viajes"],NavigationExtras)
+  console.log(this.nuser);}
 
   segmentChanged(event: any){
     console.log(event);

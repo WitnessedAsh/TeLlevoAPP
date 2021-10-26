@@ -29,7 +29,8 @@ export class LoginPage implements OnInit {
     let NavigationExtras: NavigationExtras={
       state:{nuser: this.nuser}
     };
-    this.router.navigate(["/home/viajes"],NavigationExtras)
+    this.router.navigate(["/home"],NavigationExtras)
+    console.log(this.nuser);
   }
 
   comprobarUser(){
