@@ -16,14 +16,13 @@ export class LoginPage implements OnInit {
   user:any;
   users:any;
   usl:any[]=[];
-  username:any;
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
     private api: APIService) { }
 
-  ngOnInit() {
-    this.api.getUsuarios().subscribe(async (username) => {
-      this.usl = username;
-      console.log(username);
+  async ngOnInit() {
+    this.api.getUsuarios().subscribe(async (users) => {
+      this.usl = users;
+      console.log(users);
   })
  }
 
@@ -39,18 +38,18 @@ export class LoginPage implements OnInit {
   }
 
   comprobarUser(){
-    let index = this.nuser.filter(x => x.username === this.nuser);
-    if(index === this.nuser){
-      console.log(index);
-      return true;
-    }else{
-      return false;
-    }
-  }
+    this.api.getUsuarios().subscribe((data)=>{
+      var index = data.findIndex(x => x.username != this.nuser);
+      console.log("index: ",index);
+      this.user = data[index].id;
+      console.log(this.user);
+    });
+ }
+
 
   validar(){
     let vali: boolean=true;
-    if(typeof this.nuser === 'undefined' || typeof this.ncontra === 'undefined'){
+    if(typeof this.nuser == 'undefined' || typeof this.ncontra == 'undefined'){
       this.enviaralert();
       vali=false
     }else{
@@ -64,6 +63,7 @@ export class LoginPage implements OnInit {
       }
     }
     if(vali){
+      //this.comprobarUser();
       this.siguiente();
     }
   }
