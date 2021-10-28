@@ -11,14 +11,23 @@ import { ViajesComponent } from 'src/app/components/viajes/viajes.component';
 })
 
 export class HomePage {
-  nuser:String;
-  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) { }
+  nuser:any;
+  constructor(private activeroute: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
+    this.activeroute.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state){
+        this.nuser = this.router.getCurrentNavigation().extras.state.nuser;
+        console.log("nuser: ", this.nuser);
+      }
+    });
+  }
 
-  ngOnInit() {let NavigationExtras: NavigationExtras={
-    state:{nuser: this.nuser}
-  };
-  this.router.navigate(["/home/viajes"],NavigationExtras)
-  console.log(this.nuser);}
+  ionViewDidEnter(){
+    console.log("component: " +this.nuser);
+    let NavigationExtras: NavigationExtras={
+      state: {nuser: this.nuser}
+    }
+    this.router.navigate(["home/viajes"],NavigationExtras);
+  }
 
   segmentChanged(event: any){
     console.log(event);

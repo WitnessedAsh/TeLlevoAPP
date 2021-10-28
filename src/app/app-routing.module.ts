@@ -36,9 +36,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/detalles/detalles.module').then( m => m.DetallesPageModule)
   },
   {
+    path: 'datos-per',
+    loadChildren: () => import('./pages/datos-per/datos-per.module').then( m => m.DatosPerPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   }
+ 
 ];
 
 @NgModule({

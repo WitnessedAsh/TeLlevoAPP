@@ -22,10 +22,16 @@
                     <ion-input aria-multiline=5 type="password" [(ngModel)]="ncontra" required></ion-input>
                 </ion-item>
             </ion-card-content>
-            <ion-button expand="block" (click)="validar()">Ingresar</ion-button>
+            <ion-button expand="block" (click)="validar()" color="warning">Ingresar</ion-button>
             <p>
                 <ion-text color="primary" (click)="ircontra()">¿Olvidaste tu contraseña?</ion-text>
             </p>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-content>
+                <ion-img src="../../assets/icon/2560px-Logo_DuocUC.svg.png"></ion-img>
+            </ion-card-content>
         </ion-card>
     </div>
 </ion-content>

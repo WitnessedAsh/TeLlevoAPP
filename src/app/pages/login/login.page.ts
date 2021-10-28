@@ -11,31 +11,41 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class LoginPage implements OnInit {
   a:any;
-  nuser:String;
+  nuser:any;
   ncontra:string;
   user:any;
   users:any;
+  usl:any[]=[];
+  username:any;
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
     private api: APIService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.api.getUsuarios().subscribe(async (username) => {
+      this.usl = username;
+      console.log(username);
+  })
+ }
 
   ircontra(){
     this.router.navigate(["/rcontra"])
   }
-
 
   siguiente(){
     let NavigationExtras: NavigationExtras={
       state:{nuser: this.nuser}
     };
     this.router.navigate(["/home"],NavigationExtras)
-    console.log(this.nuser);
   }
 
   comprobarUser(){
-    let index = this.a.findIndex(x => x.username === this.nuser);
-    console.log(index);
+    let index = this.nuser.filter(x => x.username === this.nuser);
+    if(index === this.nuser){
+      console.log(index);
+      return true;
+    }else{
+      return false;
+    }
   }
 
   validar(){

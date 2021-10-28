@@ -9,8 +9,16 @@ import { HomePage } from 'src/app/pages/home/home.page';
   styleUrls: ['./viajes.component.scss'],
 })
 export class ViajesComponent implements OnInit {
-  @Input() nuser;
-  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router) {}
+  nuser:any;
+  constructor(public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router,
+    private home: HomePage) {
+      this.activeroute.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state){
+          this.nuser = this.router.getCurrentNavigation().extras.state.nuser;
+          console.log("nuser: ", this.nuser);
+        }
+      });
+    }
 
   ngOnInit() {}
 

@@ -27,7 +27,8 @@ export class ModificarPage implements OnInit {
     console.log(viajes);
     this.vil = viajes;
     await loading.dismiss();
-  });}
+  });
+}
 
   ionViewWillEnter(){
     this.getViajes();
