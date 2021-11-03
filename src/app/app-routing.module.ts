@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/datos-per/datos-per.module').then( m => m.DatosPerPageModule)
   },
   {
+    path: 'newcontra',
+    loadChildren: () => import('./pages/newcontra/newcontra.module').then( m => m.NewcontraPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   }

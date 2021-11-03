@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { retry, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Viaje } from '../interfaces/viaje';
+import { Usuario } from '../interfaces/usuario';
 
 
 @Injectable({
@@ -30,15 +31,24 @@ export class APIService {
   }
   
   getUsuarios():Observable<any>{
-    return this.http.get(this.apiURL+'/users/').pipe(
+    return this.http.get(this.apiURL+'/usuarios/').pipe(
       retry(3)
     );
   }
 
   getUser(filtro: String):Observable<any>{
-    return this.http.get(this.apiURL+'/users/?username='+filtro).pipe(
+    return this.http.get(this.apiURL+'/usuarios/?usUsername='+filtro).pipe(
     retry(3)
     );
+  }
+
+  updateContra(id,usuario):Observable<any>{
+    return this.http.put(this.apiURL+'/usuarios/'+id,usuario,this.httpOptions).pipe(retry(3));
+  }
+
+  nuevaContra(usuario: Usuario) {
+    const path = `${this.apiURL}/usuarios/${usuario.id}`;
+    return this.http.put<Usuario>(path, usuario);
   }
 
   //createViaje(viaje: Viaje):Observable<any>{

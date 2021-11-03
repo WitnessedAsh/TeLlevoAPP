@@ -40,7 +40,7 @@ export class ViajesPage implements OnInit {
 
 
   btnVer(){
-    if(this.visec === undefined){
+    if(this.visec === 'Todos'){
       this.getViajes();
     }else{
       this.filtroVia();
@@ -61,7 +61,7 @@ export class ViajesPage implements OnInit {
   }
 
   volver(){
-    this.router.navigate(["home"])
+    this.router.navigate(["home/viajes"])
   }
 
 }

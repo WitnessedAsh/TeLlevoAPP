@@ -3,4 +3,5 @@ export interface Viaje {
     viFecha: Date;
     viAcompa: number;
     viSector: String;
+    viPrecio: number;
 }

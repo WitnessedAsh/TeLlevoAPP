@@ -1,4 +1,27 @@
 {
+  "usuarios": [
+    {
+      "id": 1,
+      "usName": "Vicente Gamboa",
+      "usUsername": "vi.gamboac",
+      "usContra": "prueba01",
+      "usEmail": "vi.gamoac@duocuc.cl"
+    },
+    {
+      "usName": "Lorenzo Lamas",
+      "usUsername": "lorenzo",
+      "usContra": "cuenta2",
+      "usEmail": "lorenzo@duocuc.cl",
+      "id": 2
+    },
+    {
+      "usName": "Alexander Chips",
+      "usUsername": "elPepes",
+      "usContra": "cuenta3",
+      "usEmail": "elPepes@duocuc.cl",
+      "id": 3
+    }
+  ],
   "viajes": [
     {
       "viDireccion": "asd",
@@ -13,31 +36,23 @@
       "viAcompa": 2,
       "viSector": "Valparaiso",
       "id": 2
+    },
+    {
+      "viDireccion": "por allá ",
+      "viFecha": "2021-11-03T18:48:20.685-03:00",
+      "viAcompa": 6,
+      "viSector": "Valparaiso",
+      "viPrecio": 5000,
+      "id": 3
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Leanne Graham",
-      "username": "Bret",
-      "email": "Sincere@april.biz",
-      "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
-      },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      }
+      "usName": "Vicente Gamboa",
+      "usUsername": "vi.gamboac",
+      "usContra": "nuevacontra200",
+      "usEmail": "vi.gamoac@duocuc.cl"
     },
     {
       "id": 2,

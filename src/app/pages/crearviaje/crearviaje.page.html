@@ -4,7 +4,7 @@
             Te Llevo
         </ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/home"></ion-back-button>
+            <ion-back-button defaultHref="/home/viajes"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -18,10 +18,7 @@
                     <h1>Crear un Viaje</h1>
                 </ion-label>
             </ion-card-title>
-            <!--<ion-item>
-                <ion-label position="floating">ID</ion-label>
-                <ion-input type="number" [(ngModel)]="id"></ion-input>
-            </ion-item> -->
+
             <ion-item>
                 <ion-select required type="text" placeholder="Seleccione sector" [(ngModel)]="sector">
                     <ion-select-option>Viña del Mar</ion-select-option>
@@ -35,6 +32,10 @@
             <ion-item>
                 <ion-label>Fecha</ion-label>
                 <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date" [(ngModel)]="fe"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Tarifa</ion-label>
+                <ion-input type="number" pattern="\d*" [(ngModel)]="tarifa"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label>Acompañantes</ion-label>

@@ -11,10 +11,9 @@ export class MisdatosComponent implements OnInit {
   constructor(private router:Router) { }
 
   envia(){
-//utilizo API enrutador para llamar nueva pagina       <--- se crea la funcion
-this.router.navigate(['datos-per']);  
-
+    this.router.navigate(['datos-per']);  
   }
+  
   ngOnInit() {}
 
 }

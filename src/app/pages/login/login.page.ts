@@ -10,7 +10,6 @@ import { APIService } from 'src/app/services/api.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  a:any;
   nuser:any;
   ncontra:string;
   user:any;
@@ -19,12 +18,7 @@ export class LoginPage implements OnInit {
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
     private api: APIService) { }
 
-  async ngOnInit() {
-    this.api.getUsuarios().subscribe(async (users) => {
-      this.usl = users;
-      console.log(users);
-  })
- }
+  async ngOnInit() {}
 
   ircontra(){
     this.router.navigate(["/rcontra"])
@@ -34,15 +28,20 @@ export class LoginPage implements OnInit {
     let NavigationExtras: NavigationExtras={
       state:{nuser: this.nuser}
     };
-    this.router.navigate(["/home"],NavigationExtras)
+    this.router.navigate(["/home/viajes"],NavigationExtras)
   }
 
   comprobarUser(){
     this.api.getUsuarios().subscribe((data)=>{
-      var index = data.findIndex(x => x.username != this.nuser);
-      console.log("index: ",index);
-      this.user = data[index].id;
-      console.log(this.user);
+      this.user = data;
+      var index = data.findIndex(x => x.usUsername === this.nuser);
+      //console.log("el index:",index);
+      if(this.nuser==data[index].usUsername && this.ncontra==data[index].usContra){
+        this.siguiente();
+      }else{
+        this.Incorrecto();
+        this.presentToast("Datos invalidos");
+      }
     });
  }
 
@@ -63,8 +62,7 @@ export class LoginPage implements OnInit {
       }
     }
     if(vali){
-      //this.comprobarUser();
-      this.siguiente();
+      this.comprobarUser();
     }
   }
 
@@ -93,6 +91,23 @@ export class LoginPage implements OnInit {
       buttons: ['Entendido']
     });
     await cAlerta.present()
+  }
+
+  async Incorrecto(){
+    let cAlerta = await this.alerta.create({
+      header: 'Error',
+      message: 'Usuario o Contraseña no valido',
+      buttons: ['Entendido']
+    });
+    await cAlerta.present()
+  }
+
+  async presentToast(msg:string){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 1500
+    })
+    toast.present();
   }
 
 }

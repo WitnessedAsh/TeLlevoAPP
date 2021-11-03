@@ -4,10 +4,11 @@
             Te Llevo
         </ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/home"></ion-back-button>
+            <ion-back-button defaultHref="/home/viajes"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
     <div>
@@ -15,20 +16,23 @@
             <ion-card-title>
                 <ion-label>
                     <h1>Viajes</h1>
-                    <ion-item>
-                        <ion-select type="text" placeholder="Seleccione sector" [(ngModel)]="visec">
-                            <ion-select-option>Viña del Mar</ion-select-option>
-                            <ion-select-option>Valparaiso</ion-select-option>
-                        </ion-select>
-                    </ion-item>
-                    <ion-button expand="block" (click)="btnVer()" [(ngModel)]="viaje" color="warning">Ver</ion-button>
                 </ion-label>
             </ion-card-title>
+
+            <ion-item>
+                <ion-select type="text" placeholder="Seleccione sector" [(ngModel)]="visec">
+                    <ion-select-option>Todos</ion-select-option>
+                    <ion-select-option>Viña del Mar</ion-select-option>
+                    <ion-select-option>Valparaiso</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-button expand="block" (click)="btnVer()" [(ngModel)]="viaje" color="warning">Ver</ion-button>
             <ion-list>
                 <ion-item *ngFor="let via of viajes" [value]="via">
                     <ion-label>
                         <h4>Dirección: {{via.viDireccion}}</h4>
                         <h4>Sector: {{via.viSector}}</h4>
+                        <p>Tarifa: ${{via.viPrecio}}</p>
                         <p>Asientos: {{via.viAcompa}}</p>
                         <!--<p>{{via.viFecha}}</p>-->
                     </ion-label>

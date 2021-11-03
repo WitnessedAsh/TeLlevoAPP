@@ -19,12 +19,14 @@ export class CrearviajePage implements OnInit {
   fe:Date;
   acom:number;
   sector:string;
+  tarifa:number;
   
   viaje:any={
     viDireccion:"",
     viFecha:null,
     viAcompa:null,
-    viSector:""
+    viSector:"",
+    viPrecio:null
   }
 
 
@@ -35,7 +37,7 @@ export class CrearviajePage implements OnInit {
   }
 
   addVia(){
-    this.bdlocalservice.guardarViaje(this.direc,this.fe,this.acom,this.sector);
+    this.bdlocalservice.guardarViaje(this.direc,this.fe,this.acom,this.sector,this.tarifa);
     console.log(this.direc,this.fe,this.acom,this.sector);
   }
 
@@ -52,7 +54,7 @@ export class CrearviajePage implements OnInit {
   validar(){
     let vali: boolean=true;
     if(typeof this.direc === 'undefined' || typeof this.fe === 'undefined'
-    || typeof this.acom === 'undefined' || typeof this.sector === 'undefined'){
+    || typeof this.acom === 'undefined' || typeof this.sector === 'undefined' || typeof this.tarifa === 'undefined'){
       this.enviaralert();
       vali=false
     }else{
@@ -67,6 +69,10 @@ export class CrearviajePage implements OnInit {
       if(this.fe === null){
         vali = false;
         this.enviaralertFe();
+      }
+      if(this.tarifa === 0 || this.tarifa === null || this.tarifa <=0){
+        vali = false;
+        this.enviaralertTarifa();
       }
       if(this.acom === 0 || this.acom === null){
         vali = false;
@@ -84,7 +90,8 @@ export class CrearviajePage implements OnInit {
       viDireccion:this.direc,
       viFecha:this.fe,
       viAcompa:this.acom,
-      viSector:this.sector
+      viSector:this.sector,
+      viPrecio:this.tarifa
     }
     this.api.crearViaje(viaje).subscribe((data)=>{
       console.log(data);
@@ -95,6 +102,15 @@ export class CrearviajePage implements OnInit {
     let cAlerta = await this.alerta.create({
       header: 'Error',
       message: 'Falta rellenar datos',
+      buttons: ['Entendido']
+    });
+    await cAlerta.present()
+  }
+
+  async enviaralertTarifa(){
+    let cAlerta = await this.alerta.create({
+      header: 'Error',
+      message: 'La tarifa no puede ser menor o igual a 0.',
       buttons: ['Entendido']
     });
     await cAlerta.present()

@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-title>Te Llevo</ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="/login"></ion-back-button>
+            <ion-back-button defaultHref="/rcontra"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -12,13 +12,13 @@
         <ion-card class="ion-text-center">
             <ion-card-title>
                 <ion-label>
-                    <h1>Recuperar Cuenta</h1>
+                    <h1>Nueva Contraseña</h1>
                 </ion-label>
             </ion-card-title>
             <ion-card-content>
                 <ion-item>
-                    <ion-label position="floating">Usuario</ion-label>
-                    <ion-input minlength=3 type="text" [(ngModel)]="nuser" required></ion-input>
+                    <ion-label position="floating">Nueva Contraseña:</ion-label>
+                    <ion-input minlength=3 type="password" [(ngModel)]="ncontra" required></ion-input>
                 </ion-item>
             </ion-card-content>
             <ion-alert-controller></ion-alert-controller>
