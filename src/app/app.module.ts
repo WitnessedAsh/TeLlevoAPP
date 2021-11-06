@@ -13,6 +13,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { GuardLogGuard } from './guard/guard-log.guard';
 
 
 @NgModule({
@@ -21,7 +23,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
   imports: [HttpClientModule, IonicStorageModule.forRoot(), FormsModule, BrowserModule, IonicModule.forRoot({
     navAnimation: enterAnimation
   }), AppRoutingModule, BrowserAnimationsModule],
-  providers: [EmailComposer,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [GuardLogGuard,Geolocation,EmailComposer,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

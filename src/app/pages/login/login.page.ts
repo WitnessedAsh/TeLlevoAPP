@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { APIService } from 'src/app/services/api.service';
+import { BDLocalService } from 'src/app/services/bdlocal.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
   users:any;
   usl:any[]=[];
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
-    private api: APIService) { }
+    private api: APIService, public bdlocalservice: BDLocalService) { }
 
   async ngOnInit() {}
 
@@ -37,6 +38,7 @@ export class LoginPage implements OnInit {
       var index = data.findIndex(x => x.usUsername === this.nuser);
       //console.log("el index:",index);
       if(this.nuser==data[index].usUsername && this.ncontra==data[index].usContra){
+        this.bdlocalservice.guardarUs(this.nuser,this.ncontra);
         this.siguiente();
       }else{
         this.Incorrecto();

@@ -1,4 +1,5 @@
 <ion-header [translucent]="true">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxDWtQDDHzS7oKxMim98AFgfelUA0WXgk"></script>
     <ion-toolbar>
         <ion-title class="ion-text-center">
             Te Llevo
@@ -43,6 +44,7 @@
             </ion-item>
             <ion-alert-controller></ion-alert-controller>
             <ion-button expand="block" (click)="validar()" color="warning">Crear</ion-button>
+            <div id="map"></div>
         </ion-card>
         <ion-card>
             <ion-card-content>
