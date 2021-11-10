@@ -54,13 +54,13 @@ const routes: Routes = [
   },
   {
     path: 'googlemaps',
-    loadChildren: () => import('./pages/googlemaps/googlemaps.module').then( m => m.GooglemapsPageModule)
+    loadChildren: () => import('./pages/googlemaps/googlemaps.module').then( m => m.GooglemapsPageModule),
+    canActivate:[GuardLogGuard]
   },
   {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
-  },
- 
+  }
 ];
 
 @NgModule({

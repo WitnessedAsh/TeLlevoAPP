@@ -22,7 +22,7 @@ export class ViajesPage implements OnInit {
 
 
   ionViewWillEnter(){
-    this.getViajes();
+    this.getViajes()
     this.filtroVia();
   }
 
@@ -51,13 +51,13 @@ export class ViajesPage implements OnInit {
   filtroVia(){
     this.api.getViaje(this.visec).subscribe((data)=>{
       this.viajes=data;
-    })
+    });
   }
   
   getViajes(){
     this.api.getViajes().subscribe((data)=>{
       this.viajes=data;
-    })
+    });
   }
 
   volver(){

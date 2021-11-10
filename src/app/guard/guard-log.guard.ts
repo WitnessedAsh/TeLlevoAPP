@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { BDLocalService } from '../services/bdlocal.service';
 
@@ -7,19 +8,18 @@ import { BDLocalService } from '../services/bdlocal.service';
   providedIn: 'root'
 })
 export class GuardLogGuard implements CanActivate {
-  constructor(private routes: Router, public bdlocalservice: BDLocalService){}
+  constructor(private navCtrl: NavController,private routes: Router, public bdlocalservice: BDLocalService){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if (this.bdlocalservice.getUs() != null) {
+      if (this.bdlocalservice.getUs() === null) {
+        this.navCtrl.navigateRoot(['login']);
+        return false;
+      }
+      else {
         console.log(this.bdlocalservice.getUs());
         return true;
       }
-      else {
-        this.routes.navigate(['/login']);
-        return false;
-      }
-      console.log(this.bdlocalservice.getUs());
   }
   
 }

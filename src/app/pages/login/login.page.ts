@@ -36,13 +36,13 @@ export class LoginPage implements OnInit {
     this.api.getUsuarios().subscribe((data)=>{
       this.user = data;
       var index = data.findIndex(x => x.usUsername === this.nuser);
+      this.bdlocalservice.guardarUs(this.nuser,this.ncontra);
       //console.log("el index:",index);
       if(this.nuser==data[index].usUsername && this.ncontra==data[index].usContra){
-        this.bdlocalservice.guardarUs(this.nuser,this.ncontra);
         this.siguiente();
       }else{
         this.Incorrecto();
-        this.presentToast("Datos invalidos");
+        //this.presentToast("Datos invalidos");
       }
     });
  }
