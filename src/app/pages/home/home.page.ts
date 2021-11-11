@@ -26,7 +26,7 @@ export class HomePage {
     let NavigationExtras: NavigationExtras={
       state: {nuser: this.nuser}
     }
-    this.router.navigate(["home/viajes"],NavigationExtras);
+    this.router.navigate(["home"],NavigationExtras);
   }
 
   segmentChanged(event: any){
@@ -36,6 +36,7 @@ export class HomePage {
   }
 
   salir(){
+    localStorage.removeItem('logeado')
     this.router.navigate(["/login"])
   }
 

@@ -39,6 +39,7 @@ export class CrearviajePage implements OnInit {
     public bdlocalservice: BDLocalService,public navCtrl: NavController, public geolocation:Geolocation) { }
 
   ngOnInit() {
+    this.bdlocalservice.getViajes();
   }
 
   ngAfterViewInit(){
@@ -51,7 +52,7 @@ export class CrearviajePage implements OnInit {
   }
 
   mapa(){
-    this.router.navigate(["googlemaps"]);
+    this.router.navigate(["mapbox"]);
   }
 
   async Crear(){

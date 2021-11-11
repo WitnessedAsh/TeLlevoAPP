@@ -1,14 +1,13 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title class="ion-text-center">
-            Te Llevo
+            Historial
         </ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
     <div>
@@ -18,18 +17,8 @@
                     <h1>Viajes</h1>
                 </ion-label>
             </ion-card-title>
-
-            <ion-item>
-                <ion-select type="text" placeholder="Seleccione sector" [(ngModel)]="visec">
-                    <ion-select-option>Todos</ion-select-option>
-                    <ion-select-option>Viña del Mar</ion-select-option>
-                    <ion-select-option>Valparaiso</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-button expand="block" (click)="btnVer()" [(ngModel)]="viaje" color="warning">Ver</ion-button>
-            <ion-button expand="block" (click)="volver()" color="warning">Volver</ion-button>
             <ion-list>
-                <ion-item *ngFor="let via of viajes" [value]="via">
+                <ion-item *ngFor="let via of vil" [value]="via">
                     <ion-label>
                         <h4>Dirección: {{via.viDireccion}}</h4>
                         <h4>Sector: {{via.viSector}}</h4>

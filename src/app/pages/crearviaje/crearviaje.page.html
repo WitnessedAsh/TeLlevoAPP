@@ -1,55 +1,54 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title class="ion-text-center">
-            Te Llevo
+            Te Llevo APP
         </ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="/home/viajes"></ion-back-button>
+        <ion-buttons slot="start" (click)="volver()">
+            <ion-icon name="arrow-back"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
-</ion-header>
 
 
-<ion-content [fullscreen]="true" class="ion-padding-horizontal">
-    <div>
-        <ion-card class="ion-text-center">
-            <ion-card-title>
-                <ion-label>
-                    <h1>Crear un Viaje</h1>
-                </ion-label>
-            </ion-card-title>
+    <ion-content [fullscreen]="true" class="ion-padding-horizontal">
+        <div>
+            <ion-card class="ion-text-center">
+                <ion-card-title>
+                    <ion-label>
+                        <h1>Crear un Viaje</h1>
+                    </ion-label>
+                </ion-card-title>
 
-            <ion-item>
-                <ion-select required type="text" placeholder="Seleccione sector" [(ngModel)]="sector">
-                    <ion-select-option>Viña del Mar</ion-select-option>
-                    <ion-select-option>Valparaiso</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Direccion</ion-label>
-                <ion-input type="text" [(ngModel)]="direc"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label>Fecha</ion-label>
-                <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date" [(ngModel)]="fe"></ion-datetime>
-            </ion-item>
-            <ion-item>
-                <ion-label>Tarifa</ion-label>
-                <ion-input type="number" pattern="\d*" [(ngModel)]="tarifa"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label>Acompañantes</ion-label>
-                <ion-input type="number" pattern="\d*" [(ngModel)]="acom"></ion-input>
-            </ion-item>
+                <ion-item>
+                    <ion-select required type="text" placeholder="Seleccione sector" [(ngModel)]="sector">
+                        <ion-select-option>Viña del Mar</ion-select-option>
+                        <ion-select-option>Valparaiso</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Direccion</ion-label>
+                    <ion-input type="text" [(ngModel)]="direc"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Fecha</ion-label>
+                    <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date" [(ngModel)]="fe"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Tarifa</ion-label>
+                    <ion-input type="number" pattern="\d*" [(ngModel)]="tarifa"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Acompañantes</ion-label>
+                    <ion-input type="number" pattern="\d*" [(ngModel)]="acom"></ion-input>
+                </ion-item>
 
-            <ion-button expand="block" (click)="mapa()" color="warning">Mapa</ion-button>
-            <ion-button expand="block" (click)="validar()" color="warning">Crear</ion-button>
-            <div id="map"></div>
-        </ion-card>
-        <ion-card>
-            <ion-card-content>
-                <ion-img src="../../assets/icon/2560px-Logo_DuocUC.svg.png"></ion-img>
-            </ion-card-content>
-        </ion-card>
-    </div>
-</ion-content>
+                <ion-button expand="block" (click)="mapa()" color="warning">Mapa</ion-button>
+                <ion-button expand="block" (click)="validar()" color="warning">Crear</ion-button>
+                <div id="map"></div>
+            </ion-card>
+            <ion-card>
+                <ion-card-content>
+                    <ion-img src="../../assets/icon/2560px-Logo_DuocUC.svg.png"></ion-img>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-content>

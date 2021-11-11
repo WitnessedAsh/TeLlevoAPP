@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Mapa</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/crearviaje"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<div id='mapa'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2NvbnRyZSIsImEiOiJja3Zsbm41MXUwd3ZmMnVvMDB1cHBvejdkIn0.IuzlmdLtwwL7lMaYMwRG6Q';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-79.4512, 43.6568],
+        zoom: 13
+    });
+
+    // Add the control to the map.
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
+</script>

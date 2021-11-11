@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, NavController } from '@ionic/angular';
 import { APIService } from 'src/app/services/api.service';
 import { BDLocalService } from 'src/app/services/bdlocal.service';
 
@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   users:any;
   usl:any[]=[];
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
-    private api: APIService, public bdlocalservice: BDLocalService) { }
+    private api: APIService, public bdlocalservice: BDLocalService, private navCtrl: NavController) { }
 
   async ngOnInit() {}
 
@@ -36,9 +36,11 @@ export class LoginPage implements OnInit {
     this.api.getUsuarios().subscribe((data)=>{
       this.user = data;
       var index = data.findIndex(x => x.usUsername === this.nuser);
-      this.bdlocalservice.guardarUs(this.nuser,this.ncontra);
       //console.log("el index:",index);
       if(this.nuser==data[index].usUsername && this.ncontra==data[index].usContra){
+        console.log("Sesión Iniciada!");
+        localStorage.setItem('logeado', 'true');
+        //this.navCtrl.navigateRoot('home');
         this.siguiente();
       }else{
         this.Incorrecto();

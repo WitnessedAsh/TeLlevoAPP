@@ -12,6 +12,7 @@ export class BDLocalService {
   aviaje: Viaje[]=[];
   aconectado: Conectado[]=[];
   private _storage: Storage | null = null;
+  aviajes: Viaje[];
   
   constructor(private storage: Storage, public toastController: ToastController) { 
     this.init();
@@ -23,22 +24,23 @@ export class BDLocalService {
     this._storage = storage;
  }
 
-  async getViajes(){
+  async getViajes() {
     const lviaje=await this.storage.get('aviaje');
     if(lviaje){
       this.aviaje=lviaje;
+      //console.log("lviaje",lviaje);
     }
   }
   //id: number, viID:id,
   guardarViaje(direc: String, fe: Date, acom: number,sec: String,pre: number){
-    const existe=this.aviaje.find(d=>d.viDireccion===direc);
-    if(!existe){
-      this.aviaje.unshift({viDireccion:direc,viFecha:fe,viAcompa:acom,viSector:sec,viPrecio:pre});
-      this._storage.set('aviaje',this.aviaje);
-     this.presentToast("Viaje agregado.");
-    }else{
-      this.presentToast("Error, el viaje ya existe.");
-    }
+    //const existe=this.aviaje.find(d=>d.viDireccion===direc);
+    //if(!existe){
+    this.aviaje.unshift({viDireccion:direc,viFecha:fe,viAcompa:acom,viSector:sec,viPrecio:pre});
+    this._storage.set('aviaje',this.aviaje);
+    this.presentToast("Viaje agregado.");
+    //}else{
+    //this.presentToast("Error, el viaje ya existe.");
+    //}
   }
 
   guardarUs(user:String,Contra:String){

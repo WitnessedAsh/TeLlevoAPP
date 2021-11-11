@@ -16,4 +16,8 @@ export class MisdatosComponent implements OnInit {
   
   ngOnInit() {}
 
+  historial(){
+    this.router.navigate(['historial']);
+  }
+
 }
