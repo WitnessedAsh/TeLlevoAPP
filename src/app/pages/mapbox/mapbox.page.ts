@@ -2,7 +2,9 @@ import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as Mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { environment } from 'src/environments/environment';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-mapbox',
@@ -11,16 +13,17 @@ import { environment } from 'src/environments/environment';
 })
 export class MapboxPage implements OnInit {
 
-  constructor(private geolocation:Geolocation) { }
-mapa:Mapboxgl.Map;
-lat : any;
-lng : any;
+  constructor(private activeroute: ActivatedRoute,private router:Router, private geolocation:Geolocation) { 
+  }
+  mapa:Mapboxgl.Map;
+  lat : any;
+  lng : any;
 
   async ngOnInit() {
     const glz = await this.geolocation.getCurrentPosition();
     this.lng = glz.coords.longitude;
     this.lat = glz.coords.latitude;
-    console.log("Marcador Dos GLZ: ",this.lat,this.lng);
+    //console.log("Marcador Dos GLZ: ",this.lat,this.lng);
   (Mapboxgl as any).accessToken = environment.mapboxKey;
  this.mapa = new Mapboxgl.Map({
   container: 'mapa',
@@ -29,7 +32,9 @@ lng : any;
   zoom: 16.5
   });
   this.marcador(-71.53304334046946,-33.03384594301684);
-  this.marcadorDos(this.lng,this.lat);
+
+  
+
   }
 
   marcador(lng: number, lat:number){
@@ -54,6 +59,14 @@ lng : any;
     marker.on('dragend',()=>{
     console.log(marker.getLngLat());
     });
+  }
+
+  selecor(){
+    let NavigationExtras: NavigationExtras={
+      state:{lng: this.lng, lat: this.lat}
+    };
+    this.router.navigate(["/crearviaje"],NavigationExtras)
+    console.log("***selecor:***" + NavigationExtras)
   }
 
 }

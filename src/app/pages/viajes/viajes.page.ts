@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController } from '@ionic/angular';
 import { APIService } from 'src/app/services/api.service';
 
@@ -18,11 +19,11 @@ export class ViajesPage implements OnInit {
   visec:String;
 
   constructor(private api: APIService,public alerta:AlertController,
-    private activeroute: ActivatedRoute, private router: Router) { }
+    private activeroute: ActivatedRoute, private router: Router, private emailComposer: EmailComposer) { }
 
 
   ionViewWillEnter(){
-    this.getViajes()
+    this.getViajes();
     this.filtroVia();
   }
 
@@ -62,6 +63,21 @@ export class ViajesPage implements OnInit {
 
   volver(){
     this.router.navigate(["home/viajes"])
+  }
+
+  elegir(){
+    this.enviarCorreo();
+  }
+
+  enviarCorreo(){
+    let email = {
+      to: 'vi.gamboac@duocuc.cl',
+      cc: 'ssss@dddddd.cc',
+      subject: 'Hola',
+      body: 'Que piensas?',
+      isHtml: true
+    };
+    this.emailComposer.open(email);
   }
 
 }

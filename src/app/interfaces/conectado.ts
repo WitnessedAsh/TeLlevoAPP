@@ -1,4 +1,4 @@
 export interface Conectado {
     usUsername:String;
-    usContra:String;
+    usTipo: String;
 }

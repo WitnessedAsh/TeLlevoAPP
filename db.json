@@ -5,12 +5,14 @@
       "usName": "Vicente Gamboa",
       "usUsername": "vi.gamboac",
       "usContra": "asd123",
+      "usTipo": "conductor",
       "usEmail": "vi.gamboac@duocuc.cl"
     },
     {
       "usName": "Lorenzo Lamas",
       "usUsername": "lorenzo",
       "usContra": "cuenta2",
+      "usTipo": "pasajero",
       "usEmail": "lorenzo@duocuc.cl",
       "id": 2
     },
@@ -18,33 +20,74 @@
       "usName": "Alexander Chips",
       "usUsername": "elPepes",
       "usContra": "cuenta3",
+      "usTipo": "pasajero",
       "usEmail": "elPepes@duocuc.cl",
       "id": 3
     }
   ],
   "viajes": [
     {
-      "viDireccion": "15 Norte",
-      "viFecha": "2021-11-11T04:47:12.288-03:00",
-      "viAcompa": 2,
+      "viDireccion": "15 norte",
+      "viLng": -70.6347008,
+      "viLat": -33.4528512,
+      "viFecha": "2021-12-03T02:10:47.530-03:00",
+      "viAcompa": 4,
       "viSector": "Viña del Mar",
-      "viPrecio": 500,
+      "viPrecio": 1500,
+      "id": 1
+    },
+    {
+      "viDireccion": "Cerro Alegre",
+      "viLng": -70.6347008,
+      "viLat": -33.4528512,
+      "viFecha": "2021-12-04T02:10:47.530-03:00",
+      "viAcompa": 4,
+      "viSector": "Valparaiso",
+      "viPrecio": 1500,
+      "id": 2
+    },
+    {
+      "viDireccion": "asdxxx",
+      "viFecha": "2021-12-04T15:35:55.698-03:00",
+      "viAcompa": 4,
+      "viSector": "Viña del Mar",
+      "viPrecio": 2000,
+      "id": 3
+    },
+    {
+      "viDireccion": "asdxxx",
+      "viFecha": "2021-12-04T15:35:55.698-03:00",
+      "viAcompa": 4,
+      "viSector": "Viña del Mar",
+      "viPrecio": 2000,
+      "id": 4
+    },
+    {
+      "viDireccion": "15 norte",
+      "viFecha": "2021-12-04T15:44:50.805-03:00",
+      "viAcompa": 4,
+      "viSector": "Viña del Mar",
+      "viPrecio": 2000,
       "id": 5
     },
     {
-      "viDireccion": "asd",
-      "viFecha": "2021-11-11T04:51:19.002-03:00",
-      "viAcompa": 5,
-      "viSector": "Valparaiso",
-      "viPrecio": 5,
+      "viDireccion": "15 Norte",
+      "viLng": -70.6412544,
+      "viLat": -33.4528512,
+      "viFecha": "2021-12-04T15:52:23.718-03:00",
+      "viAcompa": 4,
+      "viSector": "Viña del Mar",
+      "viPrecio": 2000,
       "id": 6
     },
     {
-      "viDireccion": "asd",
-      "viFecha": "2021-11-11T04:51:56.150-03:00",
-      "viAcompa": 5,
+      "viDireccion": "Plaza",
+      "viLng": -70.6412544,
+      "viLat": -33.4528512,
+      "viFecha": "2021-12-04T15:52:23.718-03:00",
+      "viAcompa": 4,
       "viSector": "Valparaiso",
-      "viPrecio": 5,
+      "viPrecio": 2000,
       "id": 7
     }
   ],

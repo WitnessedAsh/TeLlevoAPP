@@ -9,10 +9,12 @@ import { Viaje } from '../interfaces/viaje';
 })
 export class BDLocalService {
 
+  singlePa: any;
   aviaje: Viaje[]=[];
   aconectado: Conectado[]=[];
   private _storage: Storage | null = null;
   aviajes: Viaje[];
+  //lconec: Conectado[];
   
   constructor(private storage: Storage, public toastController: ToastController) { 
     this.init();
@@ -28,25 +30,38 @@ export class BDLocalService {
     const lviaje=await this.storage.get('aviaje');
     if(lviaje){
       this.aviaje=lviaje;
-      //console.log("lviaje",lviaje);
     }
   }
+  
   //id: number, viID:id,
   guardarViaje(direc: String, fe: Date, acom: number,sec: String,pre: number){
-    //const existe=this.aviaje.find(d=>d.viDireccion===direc);
-    //if(!existe){
     this.aviaje.unshift({viDireccion:direc,viFecha:fe,viAcompa:acom,viSector:sec,viPrecio:pre});
     this._storage.set('aviaje',this.aviaje);
     this.presentToast("Viaje agregado.");
-    //}else{
-    //this.presentToast("Error, el viaje ya existe.");
-    //}
   }
+  
+ clearUs(){
+   this.storage.remove("aconectado");
+   console.log("clearUs!!")
+ }
 
-  guardarUs(user:String,Contra:String){
-    this.aconectado.unshift({usUsername:user,usContra:Contra});
+  guardarUs(user:String,tipo:String){
+    this.aconectado.unshift({usUsername:user,usTipo:tipo});
     this._storage.set('aconectado',this.aconectado);
     console.log('aconectado:',this.aconectado);
+  }
+
+  getTipo(tipo:string){
+    const ex = this.aconectado.find(x=>x.usTipo===tipo);
+    if(!ex){
+      console.log("TRUE1: " + tipo);
+      console.log("TRUE2: " + this.aconectado.find(x=>x.usTipo));
+      return true
+    }else{
+      console.log("TRUE1: " + tipo);
+      console.log("TRUE2: " + this.aconectado.find(x=>x.usTipo));
+      return false;
+    }
   }
 
   async getUs(){
@@ -55,20 +70,6 @@ export class BDLocalService {
       this.aconectado=lus;
     }
   }
-
-  //addViaje(viaje: Viaje):void {
-  //  this.aViajes.unshift(viaje);
-  //  let viajess
-  //  if (localStorage.getItem('aViajes') === null){
-  //    viajess = [];
-  //    viajess.unshift(viaje);
-  //    localStorage.setItem('aViajes', JSON.stringify(viajess));
-  //  } else {
-  //   viajess = JSON.parse(localStorage.getItem('aViajes'));
-  //   viajess.unshift(viaje);
-  //   localStorage.setItem('aViajes', JSON.stringify(viajess));
-  //  }
- // }
   
   async presentToast(mensaje:string) {
     const toast = await this.toastController.create({

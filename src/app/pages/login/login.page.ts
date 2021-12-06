@@ -11,15 +11,20 @@ import { BDLocalService } from 'src/app/services/bdlocal.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   nuser:any;
+  usest:any;
   ncontra:string;
   user:any;
   users:any;
   usl:any[]=[];
+
   constructor(public toastController: ToastController, private router:Router, public alerta:AlertController,
     private api: APIService, public bdlocalservice: BDLocalService, private navCtrl: NavController) { }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    this.bdlocalservice.clearUs();
+  }
 
   ircontra(){
     this.router.navigate(["/rcontra"])
@@ -33,18 +38,17 @@ export class LoginPage implements OnInit {
   }
 
   comprobarUser(){
+    this.bdlocalservice.clearUs();
     this.api.getUsuarios().subscribe((data)=>{
-      this.user = data;
       var index = data.findIndex(x => x.usUsername === this.nuser);
-      //console.log("el index:",index);
+      this.usest = data[index].usTipo;
       if(this.nuser==data[index].usUsername && this.ncontra==data[index].usContra){
         console.log("Sesión Iniciada!");
         localStorage.setItem('logeado', 'true');
-        //this.navCtrl.navigateRoot('home');
+        this.bdlocalservice.guardarUs(this.nuser,this.usest);
         this.siguiente();
       }else{
         this.Incorrecto();
-        //this.presentToast("Datos invalidos");
       }
     });
  }
@@ -69,24 +73,6 @@ export class LoginPage implements OnInit {
       this.comprobarUser();
     }
   }
-
-  //async loginAlert(msg: String){                            this.siguiente();
-  //  const alert = await this.alertController.create({
-  //    cssClass: 'ion-text-center',
-  //    header: msg,
-  //    animated: true,
-  //   translucent: true,
-  //    buttons: [{
-  //      text: 'Intentar denuevo',
-  //      role: 'cancel',
-  //      cssClass: 'large primary ion-padding-horizontal',
-  //      handler: (blah) => {
-  //        console.log('Confirm Cancel: blah');
-  //      },
-  //    }]
-  //  });
-  //  alert.present();
-  //}
 
   async enviaralert(){
     let cAlerta = await this.alerta.create({

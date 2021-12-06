@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { NavigationExtras, Router } from '@angular/router';
 import { MisdatosComponent } from './misdatos.component';
 
 describe('MisdatosComponent', () => {
@@ -10,7 +10,8 @@ describe('MisdatosComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MisdatosComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers: [Router],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MisdatosComponent);

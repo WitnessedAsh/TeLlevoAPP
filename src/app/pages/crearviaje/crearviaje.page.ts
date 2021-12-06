@@ -30,15 +30,27 @@ export class CrearviajePage implements OnInit {
     viSector:"",
     viPrecio:null
   }
+
   lat:number;
-  lon:number;
+  lng:number;
   geototal:String;
   mapRef = null;
+  selecor: any;
 
   constructor(private loadingCtrl: LoadingController,private http: HttpClient,private api: APIService,public alerta:AlertController,private activeroute: ActivatedRoute, private router: Router, 
-    public bdlocalservice: BDLocalService,public navCtrl: NavController, public geolocation:Geolocation) { }
+    public bdlocalservice: BDLocalService,public navCtrl: NavController, public geolocation:Geolocation) {
+      this.activeroute.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state){
+          this.lng = this.router.getCurrentNavigation().extras.state.lng;
+          this.lat = this.router.getCurrentNavigation().extras.state.lat;
+          //console.log("nuser: ", this.nuser);
+        }
+      });
+     }
 
   ngOnInit() {
+    console.log("SELECOR EN CREARVIAJE:" + this.lng);
+    console.log("LAT: " + this.lat)
     this.bdlocalservice.getViajes();
   }
 
@@ -63,6 +75,7 @@ export class CrearviajePage implements OnInit {
     });
     await cAlerta.present()
   }
+
   //typeof this.id === 'undefined' || 
   validar(){
     let vali: boolean=true;
@@ -83,7 +96,7 @@ export class CrearviajePage implements OnInit {
         vali = false;
         this.enviaralertFe();
       }
-      if(this.tarifa === 0 || this.tarifa === null || this.tarifa <=0){
+      if(this.tarifa === 0 || this.tarifa === null || this.tarifa <=0 || this.tarifa > 2000){
         vali = false;
         this.enviaralertTarifa();
       }
@@ -91,16 +104,24 @@ export class CrearviajePage implements OnInit {
         vali = false;
         this.enviaralertAcom();
       }
+      if(this.lng === 0 && this.lat === 0 || this.lng === undefined && this.lat === undefined){
+        vali = false;
+        this.enviaralertLNGLAT();
+      }
     }
     if(vali){
       this.crearViaje();
       this.addVia();
+      console.log("SELECOR EN CREARVIAJE:" + this.lng);
+      console.log("LAT: " + this.lat);
     }
   }
 
   crearViaje(){
     const viaje = {
       viDireccion:this.direc,
+      viLng: this.lng,
+      viLat: this.lat,
       viFecha:this.fe,
       viAcompa:this.acom,
       viSector:this.sector,
@@ -123,7 +144,7 @@ export class CrearviajePage implements OnInit {
   async enviaralertTarifa(){
     let cAlerta = await this.alerta.create({
       header: 'Error',
-      message: 'La tarifa no puede ser menor o igual a 0.',
+      message: 'La tarifa no puede ser menor o igual a 0 o mayor a 2000.',
       buttons: ['Entendido']
     });
     await cAlerta.present()
@@ -151,6 +172,15 @@ export class CrearviajePage implements OnInit {
     let cAlerta = await this.alerta.create({
       header: 'Error',
       message: 'Debe seleccionar un sector',
+      buttons: ['Entendido']
+    });
+    await cAlerta.present()
+  }
+
+  async enviaralertLNGLAT(){
+    let cAlerta = await this.alerta.create({
+      header: 'Error',
+      message: 'No se encuentran coordenadas',
       buttons: ['Entendido']
     });
     await cAlerta.present()

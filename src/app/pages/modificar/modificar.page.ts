@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router, Routes } from '@angular/router';
 import { AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { Viaje } from 'src/app/interfaces/viaje';
 import { APIService } from 'src/app/services/api.service';
@@ -9,6 +9,7 @@ import { APIService } from 'src/app/services/api.service';
   templateUrl: './modificar.page.html',
   styleUrls: ['./modificar.page.scss'],
 })
+
 export class ModificarPage implements OnInit {
   viaje:any;
   viajes:any;

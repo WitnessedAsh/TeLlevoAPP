@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { UrlSerializer } from '@angular/router';
 import { DetallesPage } from './detalles.page';
 
 describe('DetallesPage', () => {
@@ -10,7 +10,8 @@ describe('DetallesPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DetallesPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers: [UrlSerializer],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DetallesPage);

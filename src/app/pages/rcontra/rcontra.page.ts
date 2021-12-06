@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras ,Router } from '@angular/router';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+//import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Button } from 'selenium-webdriver';
 import { APIService } from 'src/app/services/api.service';
@@ -14,7 +14,7 @@ export class RcontraPage implements OnInit {
   user: any;
   email: any;
   constructor(public alerta:AlertController, public toastController: ToastController, private router:Router,
-    private api: APIService, private EmailComposer: EmailComposer) { }
+    private api: APIService) { }
 
   ngOnInit() {
   }
@@ -33,11 +33,6 @@ export class RcontraPage implements OnInit {
       //console.log("el index:",index);
       if(this.nuser==data[index].usUsername){
         this.email = data[index].usEmail;
-        this.EmailComposer.isAvailable().then((available: boolean) =>{
-          if(available) {
-            this.sendMail();
-          }
-         });
         this.siguiente();
       }else{
         this.Incorrecto();
@@ -61,17 +56,17 @@ export class RcontraPage implements OnInit {
     }
   }
 
-  sendMail(){
-    let emails = {
-      to: this.email,
-      cc: 'vgamboacacciuttolo@gmail.com',
-      attachments: [],
-      subject: 'TeLlevoApp',
-      body: 'Correo para validar cambio de contraseña',
-      isHtml: true
-    };
-    this.EmailComposer.open(emails);
-  }
+  //sendMail(){
+    //let emails = {
+      //to: this.email,
+      //cc: 'vgamboacacciuttolo@gmail.com',
+      //attachments: [],
+      //subject: 'TeLlevoApp',
+      //body: 'Correo para validar cambio de contraseña',
+      //isHtml: true
+    //};
+    //this.EmailComposer.open(emails);
+  //}
 
 
   //ALERTAS

@@ -7,7 +7,16 @@
     </ion-toolbar>
 </ion-header>
 
-<div id='mapa'></div>
+
+
+
+<ion-content>
+    <ion-button expand="block" (click)="selecor()" color="warning">Seleccionar</ion-button>
+    <div id="mapa"></div>
+</ion-content>
+
+
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2NvbnRyZSIsImEiOiJja3Zsbm41MXUwd3ZmMnVvMDB1cHBvejdkIn0.IuzlmdLtwwL7lMaYMwRG6Q';
     const map = new mapboxgl.Map({

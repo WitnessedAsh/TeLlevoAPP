@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ViajesComponent } from './viajes.component';
 
 describe('ViajesComponent', () => {
@@ -10,7 +10,8 @@ describe('ViajesComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ViajesComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers: [ActivatedRoute],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ViajesComponent);

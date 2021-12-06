@@ -55,11 +55,6 @@ const routes: Routes = [
     canActivate: [DesloguearGuard]
   },
   {
-    path: 'googlemaps',
-    loadChildren: () => import('./pages/googlemaps/googlemaps.module').then( m => m.GooglemapsPageModule),
-    canActivate: [LogueadoGuard]
-  },
-  {
     path: 'mapbox',
     loadChildren: () => import('./pages/mapbox/mapbox.module').then( m => m.MapboxPageModule),
     canActivate: [LogueadoGuard]
