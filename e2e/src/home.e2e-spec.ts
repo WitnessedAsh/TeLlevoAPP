@@ -1,11 +1,14 @@
-import { browser, element, by } from "protractor";
+import { AppPage } from './app.po';
 
-describe("Home Page", () => {
-    beforeEach(() => {
-    browser.get("/home");
-    });
-    it("El primer tab de home sera Viajes con el mensaje de bienvenida", () => {
-    expect(element(by.css(".Bienvenida h1")).getText()).toContain("home/viajes");
-    });
-   });
-   
+describe('Home Page', () => {
+  let page: AppPage;
+
+  beforeEach(() => {
+    page = new AppPage();
+  });
+
+  it('El titulo es home', () => {
+    page.navigateToH();
+    expect(page.getPageTitle()).toContain('home');
+  });
+});
