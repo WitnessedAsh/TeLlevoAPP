@@ -33,6 +33,10 @@
                     <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date" [(ngModel)]="fe"></ion-datetime>
                 </ion-item>
                 <ion-item>
+                    <ion-label>Hora de Salida</ion-label>
+                    <ion-datetime displayFormat="h:mm A" [(ngModel)]="hora"></ion-datetime>
+                </ion-item>
+                <ion-item>
                     <ion-label>Tarifa</ion-label>
                     <ion-input type="number" pattern="\d*" [(ngModel)]="tarifa"></ion-input>
                 </ion-item>

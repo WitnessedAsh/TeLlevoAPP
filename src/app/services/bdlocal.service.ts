@@ -40,15 +40,18 @@ export class BDLocalService {
     this.presentToast("Viaje agregado.");
   }
   
- clearUs(){
-   this.storage.remove("aconectado");
-   console.log("clearUs!!")
+ async clearUs(key: string){
+   return await this.storage.remove(key);
  }
 
   guardarUs(user:String,tipo:String){
     this.aconectado.unshift({usUsername:user,usTipo:tipo});
     this._storage.set('aconectado',this.aconectado);
     console.log('aconectado:',this.aconectado);
+  }
+
+  eliminarUs(){
+    this.aconectado.splice(1);
   }
 
   getTipo(tipo:string){

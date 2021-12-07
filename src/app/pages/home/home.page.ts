@@ -16,7 +16,7 @@ export class HomePage {
     this.activeroute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state){
         this.nuser = this.router.getCurrentNavigation().extras.state.nuser;
-        //console.log("nuser: ", this.nuser);
+        console.log("params: " + params);
       }
     });
   }

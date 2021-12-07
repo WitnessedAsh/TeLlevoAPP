@@ -6,9 +6,6 @@ import { Viaje } from 'src/app/interfaces/viaje';
 import { APIService } from 'src/app/services/api.service';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 import { BDLocalService } from 'src/app/services/bdlocal.service';
-import { google } from 'google-maps';
-
-declare var google;
 
 @Component({
   selector: 'app-crearviaje',
@@ -22,6 +19,7 @@ export class CrearviajePage implements OnInit {
   acom:number;
   sector:string;
   tarifa:number;
+  hora:any;
   
   viaje:any={
     viDireccion:"",
@@ -100,7 +98,7 @@ export class CrearviajePage implements OnInit {
         vali = false;
         this.enviaralertTarifa();
       }
-      if(this.acom === 0 || this.acom === null){
+      if(this.acom === 0 || this.acom === null || this.acom > 6){
         vali = false;
         this.enviaralertAcom();
       }
@@ -123,6 +121,7 @@ export class CrearviajePage implements OnInit {
       viLng: this.lng,
       viLat: this.lat,
       viFecha:this.fe,
+      viHora:this.hora,
       viAcompa:this.acom,
       viSector:this.sector,
       viPrecio:this.tarifa

@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
     private api: APIService, public bdlocalservice: BDLocalService, private navCtrl: NavController) { }
 
   async ngOnInit() {
-    this.bdlocalservice.clearUs();
+    this.bdlocalservice.clearUs('aconectado');
   }
 
   ircontra(){
@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
   }
 
   comprobarUser(){
-    this.bdlocalservice.clearUs();
+    this.bdlocalservice.clearUs('aconectado');
     this.api.getUsuarios().subscribe((data)=>{
       var index = data.findIndex(x => x.usUsername === this.nuser);
       this.usest = data[index].usTipo;
